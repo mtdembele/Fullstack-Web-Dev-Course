@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    color: white;
+}
+
+#grid{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    
+    grid-template-rows: repeat(60,1fr);
+}
+
+.item1{
+    background-image: url("Images/Balimountain.jpg");
+    background-size: cover;
+    background-position: left 25%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end:50 ;
+    min-height: 1100px;
+    
+}
+.item2, .item4{
+    grid-row-start: 1;
+    grid-row-end:42 ;
+}
+.item2{
+    background-image: url("Images/baliunderwater.jpg");
+    background-size: cover;
+    min-width: 528.54px;
+}
+.item4{
+    background-image: url("Images/balipool.jpg");
+    background-size: cover;
+    background-position:25%;
+    min-width: 528.54px;
+
+}
+
+.item5{
+    background-color: #18313d;
+    grid-row-start:42;
+    grid-row-end:56;
+    grid-column-start: 3 ;
+    grid-column-end: 5;
+    min-width: 1057.1px;
+
+}
+.item6{
+    background-color: #18313d;
+    grid-column-end: 3;
+    grid-column-start: 1;
+    grid-row-start: 50;
+    grid-row-end:56;
+    max-width: 1464px;
+}
+.item6 h2{
+    display: inline-block;
+    position: relative;
+    top: 25px;
+    left: 100px;
+    word-spacing: 250px;
+}
+.header{
+    position: relative;
+    left: 50px;
+    
+}
+.header h1{
+    display: inline-block;
+    margin-right: 1100px;
+}
+#search{
+    margin-right: 80px;
+}
+#bigtext{
+    position: relative;
+    display: inline-block;
+    top: 40%;
+    left: 510px;
+    margin-top: 0;
+    font-size: 150px;
+    font-weight: bold;
+    text-align: center;
+
+}
+#bigtext::first-line{
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+#about{
+    margin-top: 50px;
+    margin-left: 75px;
+    letter-spacing: 1px;
+}
+#paragraph{
+    margin-left: 75px;
+    width: 950px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+
