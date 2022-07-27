@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            
+        }
+        *{
+            box-sizing: border-box;
+        }
+        #grid{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-column-gap: 50px;
+            grid-row-gap: 40px;
+            /* padding-left: 50px;
+            padding-right: 50px; */
+        }
+        #grid div{
+            text-align: center;
+            
+            
+        }
+        #species{
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 10;
+            background-color: 
+        }
+        .cards{
+            grid-row-start: 10;
+            grid-row-end: 18;
+            border: 1px solid red;
+            background-color: white;
+           
+            
+        }
+        #button{
+            margin: 0 auto;
+            background: rgb(240,240,240);
+            background: linear-gradient(0deg, rgba(240,240,240,1) 50%, rgba(238,21,21,1) 50%);
+            border: 3px solid grey;
+            width: 100px;
+            transition: all 2s;
+        
+        }
+        #button:hover{
+            
+            border: 3px solid darkgrey;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="grid">
+        <div id="species">
+            species
+            <h1 id="name"></h1>
+            <div id="image">Image here</div>
+            <div id="button">SEARCH</div>
+
+        </div>
+        <div id="attributes" class="cards">attributes</div>
+        <div id="abilities" class="cards">abilities</div>
+        <div id="evolutions" class="cards">evolutions</div>
+        
+    </div>
+</body>
+<script>
+    const pokeName = document.getElementById("name");
+    const pokeImage = document.getElementById("image");
+    const pokeInfo = document.getElementById("info");
+    let newData = [];
+    let url = "https://pokeapi.co/api/v2/pokemon/";
+    const generateUrl = () =>{
+       let randInt = Math.round(Math.random()*151);
+       url = "https://pokeapi.co/api/v2/pokemon/"+randInt;
+    }
+    function getNewPokemon(){
+        generateUrl();
+        fetch(url)
+            .then(response =>response.json())
+            .then(data => newData = data)
+            console.log(newData.name);
+            // updatePage();
+}
+    function updatePage(){
+        pokeName.innerText =  newData.species.name;
+        pokeName.innerText = pokeName.innerText.toUpperCase();
+        pokeImage.innerHTML
+        // pokeInfo.innerText = newData.species.name;
+    }
+
+</script>
+</html>
