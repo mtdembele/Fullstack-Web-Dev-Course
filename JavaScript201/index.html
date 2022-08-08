@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        *{
+            box-sizing: border-box;
+        }
+        #image{
+            height: 96px;
+            width: 96px;
+        }
+        #grid{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-column-gap: 50px;
+            grid-row-gap: 40px;
+            /* padding-left: 50px;
+            padding-right: 50px; */
+        }
+        #grid div{
+            text-align: center;
+            
+            
+        }
+        #species{
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 10;
+            
+        }
+        .cards{
+            grid-row-start: 10;
+            grid-row-end: 18;
+            border: 1px solid red;
+            background-color: white;
+           
+            
+        }
+        #button{
+            margin: 0 auto;
+            background: rgb(240,240,240);
+            background: linear-gradient(0deg, rgba(240,240,240,1) 50%, rgba(238,21,21,1) 50%);
+            border: 3px solid grey;
+            width: 100px;
+            transition: all 2s;
+        
+        }
+        #button:hover{
+            
+            border: 3px solid darkgrey;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="grid">
+        <div id="species">
+            species
+            <h1 id="name"></h1>
+            <img id="image"></img>
+            <div id="button">SEARCH</div>
+
+        </div>
+        <div id="attributes" class="cards">Attributes
+            <h3 id="type"></h1>
+            <h3 id="height"></h1>
+            <h3 id="weight"></h1>
+        </div>
+        <div id="abilities" class="cards">Abilities
+            <h3 id="ability1" class="abilities"></h1>
+            <h3 id="ability2" class="abilities"></h1>
+        </div>
+        <div id="Stats" class="cards">Stats
+            <h3 id="hp"></h1>
+            <h3 id="attack"></h1>
+            <h3 id="defense"></h1>
+            <h3 id="speed"></h1>
+        </div>
+        
+    </div>
+</body>
+<script>
+    const pokeName = document.getElementById("name");
+    const pokeImage = document.getElementById("image");
+    const pokeInfo = document.getElementById("info");
+    const button = document.getElementById("button");
+    const pokeType = document.getElementById("type");
+    const pokeHeight = document.getElementById("height");
+    const pokeWeight = document.getElementById("weight");
+    const ability_one = document.getElementById("ability1");
+    const ability_two = document.getElementById("ability2");
+    const hp = document.getElementById("hp");
+    const attack = document.getElementById("attack");
+    const defense = document.getElementById("defense");
+    const speed = document.getElementById("speed");
+    const image = document.getElementById("image");
+
+    window.onload=function(){  
+    document.getElementById("button").click();
+    };  //The page throws a TypeError on the first click so I autoclick upon load while i figure it out.
+
+    button.addEventListener("click", () => {
+        getNewPokemon();
+        });
+
+    let newData = [];
+    let url = "https://pokeapi.co/api/v2/pokemon/";
+    const generateUrl = () =>{
+       let randInt = Math.round(Math.random()*151);
+       url = "https://pokeapi.co/api/v2/pokemon/"+randInt;
+    }
+    function getNewPokemon(){
+        generateUrl();
+        fetch(url)
+            .then(response =>response.json())
+            .then(data => newData = data)
+            console.log(newData.name);
+             updatePage();
+}
+    function updatePage(){
+        pokeHeight.innerText = "Height: " + newData.height;
+        pokeType.innerText = "Type: " + newData.types[0].type.name;
+        pokeWeight.innerText = "Weight:" + newData.weight;
+        ability_one.innerText = newData.abilities[0].ability.name;
+        ability_two.innerText = newData.abilities[1].ability.name;
+        pokeName.innerText =  newData.species.name;
+        pokeName.innerText = pokeName.innerText.toUpperCase();
+        hp.innerText = "HP: " + newData.stats[0].base_stat;
+        attack.innerText = "Attack: "+ newData.stats[1].base_stat;
+        defense.innerText = "Defense: " + newData.stats[2].base_stat;
+        speed.innerText = "Speed: " + newData.stats[5].base_stat;
+        //TODO: find out how to add image to page
+
+        
+        
+        
+    }
+
+</script>
+</html>
