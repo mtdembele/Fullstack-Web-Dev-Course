@@ -100,7 +100,7 @@
     const attack = document.getElementById("attack");
     const defense = document.getElementById("defense");
     const speed = document.getElementById("speed");
-    const image = document.getElementById("image");
+    
 
     window.onload=function(){  
     document.getElementById("button").click();
@@ -136,7 +136,8 @@
         attack.innerText = "Attack: "+ newData.stats[1].base_stat;
         defense.innerText = "Defense: " + newData.stats[2].base_stat;
         speed.innerText = "Speed: " + newData.stats[5].base_stat;
-        //TODO: find out how to add image to page
+        pokeImage.setAttribute('src',newData.sprites.other.dream_world.front_default)
+        //TODO: Style output, cards, and buttons
 
         
         
